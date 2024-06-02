@@ -1,5 +1,7 @@
 import type { CollectionConfig } from 'payload/types'
 
+import { anyone } from '../../access/anyone'
+
 export const Heroes: CollectionConfig = {
   slug: 'heroes',
   fields: [
@@ -23,6 +25,6 @@ export const Heroes: CollectionConfig = {
     useAsTitle: 'name',
   },
   access: {
-    read: () => true,
+    read: anyone,
   },
 }
