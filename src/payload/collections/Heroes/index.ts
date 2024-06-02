@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload/types'
 
 import { anyone } from '../../access/anyone'
+import { formatSlug } from './hooks/formatSlug'
 
 export const Heroes: CollectionConfig = {
   slug: 'heroes',
@@ -9,6 +10,16 @@ export const Heroes: CollectionConfig = {
       name: 'name',
       type: 'text',
       required: true,
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      hooks: {
+        beforeChange: [formatSlug],
+      },
+      admin: {
+        readOnly: true,
+      },
     },
     {
       name: 'title',
